@@ -1,0 +1,14 @@
+.classpath
+.project
+.settings
+**/target
+*/.DS_Store
+.DS_Store
+.DS_Store?
+*.attach_pid*
+.idea/
+**/test-output/
+*.iml
+*.pmd
+*/out
+*/lib
