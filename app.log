@@ -1,0 +1,14 @@
+2021-08-26 22:14:27,418 [main] -  INFO c.d.j.App - Connector built with host: dbData and PORT: 65455}
+2021-08-26 22:14:31,498 [main] -  INFO c.d.j.App - 1000 users retrieved
+2021-08-26 22:14:31,498 [main] -  INFO c.d.j.App - Scrolling 1000 users
+2021-08-26 22:14:35,542 [main] -  INFO c.d.j.App - 1000 users scrolled
+2021-08-26 22:14:35,543 [main] -  INFO c.d.j.App - Scrolling 1000 users
+2021-08-26 22:14:35,546 [main] - ERROR c.d.j.App - Error while performing search operation
+com.despegar.jav.SearchException: Failed to scroll
+	at com.despegar.jav.ConnectorDummy.scroll(ConnectorDummy.java:40)
+	at com.despegar.jav.App.main(App.java:29)
+2021-08-26 22:14:36,559 [main] - ERROR c.d.j.App - Error while performing clear scroll
+com.despegar.jav.SearchException: Cannot clear scroll. More data is available.
+	at com.despegar.jav.ConnectorDummy.clearScroll(ConnectorDummy.java:62)
+	at com.despegar.jav.App.main(App.java:41)
+2021-08-26 22:14:36,560 [main] -  INFO c.d.j.App - end process
