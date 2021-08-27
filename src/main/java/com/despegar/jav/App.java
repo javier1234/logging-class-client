@@ -1,33 +1,48 @@
 package com.despegar.jav;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class App {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+
+    private static final String host = "dbData";
+    private static final int port = 65455;
+    private static final String user = "carlos.alvarez";
+    private static final String pass = "despegar1234";
+
     public static void main(String[] args) {
-        final Connector connector = ConnectorDummy.getInstance("dbData", 65535, "carlos.alvarez", "despegar1234");
-        System.out.println("Connector built \n with user: carlos.alvaruez \n PORT: despegar1234");
+        final Connector connector = ConnectorDummy.getInstance(host, port, user, pass);
+        LOGGER.info("Connector built with host: {} and PORT: {}}", host, port); ;
         final Request request = new Request(1000);
 
         try {
+            LOGGER.debug("Retrieving {} users", request.limit());
             Response searchResponse = connector.search(request);
-            System.out.println("retrieved: " + searchResponse.toString() + "\n with request:" + request.toString());
+            LOGGER.info("{} users retrieved", searchResponse.read());
             boolean mustScroll = !searchResponse.end();
             try {
                 while (mustScroll) {
-                    Response scrollResponse = connector.scroll(request);
+                    LOGGER.info("Scrolling {} users", request.limit());
+                    final Response scrollResponse = connector.scroll(request);
+                    LOGGER.info("{} users scrolled", scrollResponse.read());
                     mustScroll = !scrollResponse.end();
-                    System.out.println("retrieved: " + searchResponse.toString() + "\n with request:" + request.toString());
                 }
-                System.out.println("end scolling");
+                LOGGER.debug("end while");
             } catch (SearchException se) {
-                System.out.println("Error");
+                LOGGER.error("Error while performing search operation", se);
             }
         } catch (SearchException se) {
-            System.out.println("Error");
+            LOGGER.info("Closing scroll");
         } finally {
             try {
                 connector.clearScroll();
-            } catch (SearchException se) {}
+            } catch (SearchException se) {
+                LOGGER.error("Error while performing clear scroll", se);
+            }
         }
-        System.out.println("The end");
+        LOGGER.info("end process");
     }
 }
