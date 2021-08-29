@@ -12,3 +12,4 @@
 *.pmd
 */out
 */lib
+app.*.log
