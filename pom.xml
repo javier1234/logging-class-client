@@ -19,9 +19,9 @@
         <dependency>
             <groupId>com.despegar.jav</groupId>
             <artifactId>logging-class-provider</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>4.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/logging-class-provider-1.0-SNAPSHOT.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/resources/logging-class-provider-4.0.jar</systemPath>
         </dependency>
     </dependencies>
 
