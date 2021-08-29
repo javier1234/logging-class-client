@@ -23,7 +23,7 @@
 		</triggeringPolicy>
 	</appender>
 
-	<logger name="com.despegar.jav" level="INFO" />
+	<logger name="com.despegar.jav" level="DEBUG" />
 
 	<root level="INFO">
 		<appender-ref ref="console" />
